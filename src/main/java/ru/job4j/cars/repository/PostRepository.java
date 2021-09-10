@@ -12,4 +12,6 @@ public interface PostRepository {
     List<Post> getWithImages();
 
     List<Post> getByBrand(CarBrand brand);
+
+    Post save(Post post);
 }

@@ -13,8 +13,8 @@ create table car_brands
 
 create table images
 (
-    id   serial primary key,
-    path varchar(255),
+    id      serial primary key,
+    path    varchar(255),
     post_id integer references posts
 );
 
@@ -32,5 +32,6 @@ create table posts
     sold        boolean not null default false,
     author_id   integer references users,
     body_id     integer references car_body_types,
-    brand_id    integer references car_brands
+    brand_id    integer references car_brands,
+    created     timestamp
 );
