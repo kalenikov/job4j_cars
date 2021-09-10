@@ -1,17 +1,20 @@
 package ru.job4j.cars.model;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "posts")
+@ToString
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String description;
 
-    @Column(columnDefinition = "false", nullable = false)
+    @Column(columnDefinition = "boolean default false", nullable = false)
     private boolean sold;
 
     @ManyToOne
@@ -22,7 +25,8 @@ public class Post {
     @JoinColumn(name = "body_id")
     private CarBodyTape carBodyTape;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "post_id")
     private Set<Image> images;
 
     @ManyToOne

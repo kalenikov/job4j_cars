@@ -14,7 +14,8 @@ create table car_brands
 create table images
 (
     id   serial primary key,
-    path varchar(255)
+    path varchar(255),
+    post_id integer references posts
 );
 
 
@@ -32,12 +33,4 @@ create table posts
     author_id   integer references users,
     body_id     integer references car_body_types,
     brand_id    integer references car_brands
-);
-
-create table posts_images
-(
-    post_id   integer not null references posts,
-    images_id integer not null unique references images,
-    constraint posts_images_pkey
-        primary key (post_id, images_id)
 );
