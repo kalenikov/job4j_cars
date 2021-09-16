@@ -1,19 +1,32 @@
 package ru.job4j.cars.model;
 
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "users")
-@NoArgsConstructor
+@EqualsAndHashCode(of = {"id"})
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private int id;
     private String name;
+    private String email;
 
-    public User(String name) {
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+     public User(String name) {
         this.name = name;
     }
 }

@@ -1,4 +1,4 @@
-package ru.job4j.cars;
+package ru.job4j.cars.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,7 +27,7 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
-      public static <T> T doInTransactionWithReturn(Function<Session, T> command) {
+    public static <T> T getFromTx(Function<Session, T> command) {
         Session session = getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         try {
@@ -42,7 +42,7 @@ public class HibernateUtil {
         }
     }
 
-    public static void doInTransaction(Consumer<Session> consumer) {
+    public static void inTx(Consumer<Session> consumer) {
         Session session = getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         try {

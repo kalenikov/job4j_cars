@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,6 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,10 +33,10 @@ public class Post {
     @JoinColumn(name = "body_id")
     private CarBodyType carBodyType;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "post_id")
     @ToString.Exclude
-    private Set<Image> images;
+    private Set<Image> images = new HashSet<>();
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
@@ -49,5 +51,9 @@ public class Post {
         this.carBodyType = carBodyType;
         this.author = author;
         this.images = images;
+    }
+
+    public boolean isOwner(User user){
+        return author.equals(user);
     }
 }

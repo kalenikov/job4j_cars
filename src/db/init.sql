@@ -16,13 +16,15 @@ create table images
     id      serial primary key,
     path    varchar(255),
     post_id integer references posts
+        on delete cascade
 );
 
 
 create table users
 (
-    id   serial primary key,
-    name varchar(255)
+    id    serial primary key,
+    name  varchar(255),
+    email varchar(255)
 );
 
 create table posts
@@ -35,3 +37,14 @@ create table posts
     brand_id    integer references car_brands,
     created     timestamp
 );
+
+insert into users(name, email)
+values ('guest', 'guest@local');
+
+insert into car_body_types(name)
+values ('body1'),
+       ('body2');
+
+insert into car_brands(name)
+values ('brand1'),
+       ('brand2');
