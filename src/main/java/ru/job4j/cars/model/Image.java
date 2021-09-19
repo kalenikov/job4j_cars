@@ -1,6 +1,7 @@
 package ru.job4j.cars.model;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "images")
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"path"})
+@Getter
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

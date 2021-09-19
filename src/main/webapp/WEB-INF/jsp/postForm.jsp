@@ -63,13 +63,15 @@
                             </c:forEach>
                         </select>
                     </div>
-
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-3">Images</label>
+                        <div class="col-sm-3">
+                            <input type="file" id="file" name="file" accept="images" multiple/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <c:forEach items="${post.images}" var="image">
-                            <img src="<c:url value="/image.do?path=${image.path}"/>" width="300px" height="200px">
+                            <img src="<c:url value="/image.do?path=${image.path}"/>" width="200px" height="150px">
                         </c:forEach>
-                        <input type="file" id="file" name="file" accept="images" multiple/>
                     </div>
 
                     <div class="form-group row">
