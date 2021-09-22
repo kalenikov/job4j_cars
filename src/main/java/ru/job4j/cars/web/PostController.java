@@ -84,7 +84,7 @@ public class PostController extends HttpServlet {
         post.setSold(sold);
         PostRepositoryImpl.getInstance().save(post);
 
-        resp.sendRedirect(req.getContextPath() + "/index.do");
+        resp.sendRedirect(req.getContextPath());
     }
 
     private String getRandomFileName(String name) {

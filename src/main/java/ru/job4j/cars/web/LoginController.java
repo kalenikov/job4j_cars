@@ -24,7 +24,7 @@ public class LoginController extends HttpServlet {
         Optional<User> user = UserRepositoryImpl.getInstance().getByEmail(email);
         if (user.isPresent()) {
             req.getSession().setAttribute("user", user.get());
-            resp.sendRedirect(req.getContextPath() + "/index.do");
+            resp.sendRedirect(req.getContextPath());
         } else {
             req.setAttribute("errorMessage", "Email not found");
             req.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(req, resp);
