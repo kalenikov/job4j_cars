@@ -11,7 +11,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/image.do",
         initParams = {
-                @WebInitParam(name = "imageDir", value = "c:\\temp\\java\\job4j_cars\\images\\"),
+                @WebInitParam(name = "imageDir", value = "\\job4j_cars\\images\\"),
         })
 public class ImageController extends HttpServlet {
     @Override

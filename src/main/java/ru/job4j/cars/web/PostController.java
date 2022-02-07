@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 @WebServlet(urlPatterns = "/post.do")
 @MultipartConfig(
-        location = "c:\\temp\\java\\job4j_cars\\images\\",
+        location = "\\job4j_cars\\images\\",
         fileSizeThreshold = 1024 * 1024 * 10)
 public class PostController extends HttpServlet {
     @Override
